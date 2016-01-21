@@ -23,7 +23,10 @@
 
     <TextView
             android:id="@+id/txContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:scrollbars="vertical|horizontal"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_width="wrap_content"
+            android:overScrollMode="always"
+            android:layout_height="match_parent"/>
 
 </LinearLayout>
