@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.maneater.base.util.InjectUtil;
 
-public abstract class AbsBaseActivity extends AppCompatActivity implements InjectUtil.InjectViewAble {
+public abstract class XBaseActivity extends AppCompatActivity implements InjectUtil.InjectViewAble {
 
 
     private View.OnClickListener onClickListener = null;
@@ -13,11 +13,26 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements Injec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView(savedInstanceState);
+        initData();
+        initListener();
+    }
 
+    protected abstract int getContentViewId();
+
+    protected abstract InjectUtil.InjectViewAble getInjectViewTarget();
+
+    protected abstract void onViewClick(int viewId, View view);
+
+
+    /**
+     * 重写时，需要调用父类接口
+     * @param savedInstanceState
+     */
+    protected void initView(Bundle savedInstanceState) {
         if (getContentViewId() > 0) {
             setContentView(getContentViewId());
         }
-
         if (getInjectViewTarget() != null) {
             onClickListener = new View.OnClickListener() {
                 @Override
@@ -29,10 +44,9 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements Injec
         }
     }
 
-    protected abstract int getContentViewId();
+    protected abstract void initData();
 
-    protected abstract InjectUtil.InjectViewAble getInjectViewTarget();
+    protected abstract void initListener();
 
-    protected abstract void onViewClick(int viewId, View view);
 
 }
