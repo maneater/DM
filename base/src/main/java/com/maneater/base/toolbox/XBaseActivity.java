@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.maneater.base.util.InjectUtil;
+import de.greenrobot.event.EventBus;
 
 public abstract class XBaseActivity extends AppCompatActivity implements InjectUtil.InjectViewAble {
 
@@ -27,6 +28,7 @@ public abstract class XBaseActivity extends AppCompatActivity implements InjectU
 
     /**
      * 重写时，需要调用父类接口
+     *
      * @param savedInstanceState
      */
     protected void initView(Bundle savedInstanceState) {
@@ -48,5 +50,16 @@ public abstract class XBaseActivity extends AppCompatActivity implements InjectU
 
     protected abstract void initListener();
 
+    protected EventBus getEventBus() {
+        return EventBus.getDefault();
+    }
+
+    protected void registerEventBus() {
+        getEventBus().register(this);
+    }
+
+    protected void unRegisterEventBus() {
+        getEventBus().unregister(this);
+    }
 
 }

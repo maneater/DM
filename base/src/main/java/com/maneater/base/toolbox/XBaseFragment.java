@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.maneater.base.util.InjectUtil;
+import de.greenrobot.event.EventBus;
 
 public abstract class XBaseFragment extends Fragment implements InjectUtil.InjectViewAble {
 
@@ -58,6 +59,18 @@ public abstract class XBaseFragment extends Fragment implements InjectUtil.Injec
     protected abstract void initData();
 
     protected abstract void initListener();
+
+    protected EventBus getEventBus() {
+        return EventBus.getDefault();
+    }
+
+    protected void registerEventBus() {
+        getEventBus().register(this);
+    }
+
+    protected void unRegisterEventBus() {
+        getEventBus().unregister(this);
+    }
 
 
 }

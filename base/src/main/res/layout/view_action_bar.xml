@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             style="@style/ToolbarStyle"
+             android:layout_width="match_parent">
+    <ImageView
+            android:id="@+id/backView"
+            android:layout_width="48dp"
+            android:onClick="onActionBackClick"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_nav_back"/>
+
+    <TextView
+            android:id="@+id/titleView"
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"/>
+    <TextView
+            android:id="@+id/txActionName"
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center_vertical"/>
+
+</FrameLayout>

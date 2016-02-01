@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="ToolbarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:attr/actionBarSize</item>
+    </style>
+    <style name="TitleTextStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+</resources>
