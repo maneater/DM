@@ -16,7 +16,7 @@ public class XActionBar extends FrameLayout implements View.OnClickListener {
 
     private ActionClickListener mActionBarClickListener = null;
 
-    public void setActionBarClickListener(ActionClickListener actionBarClickListener) {
+    public void setOnActionBarClickListener(ActionClickListener actionBarClickListener) {
         this.mActionBarClickListener = actionBarClickListener;
     }
 
@@ -80,12 +80,10 @@ public class XActionBar extends FrameLayout implements View.OnClickListener {
 
     @Override
     public void onClick(final View v) {
-        switch (v.getId()) {
-            case R.id.txActionName:
-                if (mActionBarClickListener != null) {
-                    mActionBarClickListener.onActionClick(v);
-                }
-                break;
+        if (v.equals(txActionName)) {
+            if (mActionBarClickListener != null) {
+                mActionBarClickListener.onActionClick(v);
+            }
         }
     }
 

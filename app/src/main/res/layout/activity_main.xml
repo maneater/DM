@@ -7,37 +7,48 @@
 
     <RadioGroup
             android:id="@+id/topBar"
+            android:background="@android:color/holo_green_light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
         <RadioButton
+                android:id="@+id/rbSuggestionList"
                 android:layout_width="0dip"
                 android:text="推荐"
+                style="@style/HomeGroupButton"
                 android:layout_weight="1"
+                android:tag="com.maneater.dm.app.fragment.SuggestionListFragment"
                 android:layout_height="wrap_content"/>
 
         <RadioButton
+                android:id="@+id/rbSortList"
                 android:layout_width="0dip"
-                android:text="排行"
+                android:text="排行" style="@style/HomeGroupButton"
                 android:layout_weight="1"
+                android:tag="com.maneater.dm.app.fragment.SortListFragment"
                 android:layout_height="wrap_content"/>
 
         <RadioButton
+                android:id="@+id/rbCategoryList"
                 android:layout_width="0dip"
-                android:text="分类"
+                android:text="分类" style="@style/HomeGroupButton"
                 android:layout_weight="1"
+                android:tag="com.maneater.dm.app.fragment.CategoryListFragment"
                 android:layout_height="wrap_content"/>
 
         <RadioButton
+                android:id="@+id/tbMyHome"
                 android:layout_width="0dip"
-                android:text="我的"
+                android:text="我的" style="@style/HomeGroupButton"
                 android:layout_weight="1"
+                android:tag="com.maneater.dm.app.fragment.MyHomeFragment"
                 android:layout_height="wrap_content"/>
 
     </RadioGroup>
 
     <android.support.v4.view.ViewPager
+            android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/homeViewPager">

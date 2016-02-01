@@ -1,4 +1,4 @@
-package com.maneater.dm.app.activity.fragment;
+package com.maneater.dm.app.fragment;
 
 import android.view.View;
 import com.maneater.base.toolbox.XBaseFragment;
