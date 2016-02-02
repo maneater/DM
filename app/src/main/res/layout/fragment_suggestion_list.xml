@@ -3,10 +3,10 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="com.maneater.dm.app.fragment.SuggestionListFragment">
+
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_test_rv"
-            android:scrollbars="vertical"
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#bbccaa"/>
+            android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 </FrameLayout>
