@@ -5,6 +5,13 @@ public class Result<T> {
     private int msg;
     private T data;
 
+    public Result() {
+    }
+
+    public Result(T data) {
+        this.data = data;
+    }
+
     public int getCode() {
         return code;
     }

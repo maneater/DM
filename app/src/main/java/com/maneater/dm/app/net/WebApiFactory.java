@@ -24,7 +24,7 @@ public class WebApiFactory {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        return retrofit.create(WebApi.class);
+        return new WebApiWrap(retrofit.create(WebApi.class));
     }
 
     private static class NetWorkInterceptor implements Interceptor {

@@ -15,7 +15,7 @@ public class InjectUtil {
     /**
      * 初始化所有 声明的 View 属性；约定 控件属性名和控件ID名相同
      */
-    public static void injectViews(InjectViewAble target, Context mContext, View.OnClickListener onClickListener) {
+    public static  <T extends InjectViewAble> T injectViews(T target, Context mContext, View.OnClickListener onClickListener) {
         Field[] fields = target.getClass().getDeclaredFields();
         try {
             for (Field field : fields) {
@@ -37,6 +37,7 @@ public class InjectUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return target;
     }
 
     public static Type getParameterUpperBound(int index, ParameterizedType type) {
