@@ -1,16 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="match_parent">
 
-    <TextView
-            android:text="@string/hello_world"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <FrameLayout
+            android:id="@+id/lytContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"></FrameLayout>
 
-</RelativeLayout>
+    <RadioGroup
+            android:id="@+id/bottomBar"
+            android:background="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <RadioButton
+                android:id="@+id/rbCompetition"
+                android:layout_width="0dip"
+                android:text="比赛"
+                android:drawableTop="@mipmap/ic_launcher"
+                style="@style/HomeGroupButton"
+                android:layout_weight="1"
+                android:tag="com.maneater.app.sport.fragment.CompetitionFragment"
+                android:layout_height="wrap_content"/>
+
+        <RadioButton
+                android:id="@+id/rbRankingList"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:layout_width="0dip"
+                android:text="排行榜"
+                style="@style/HomeGroupButton"
+                android:layout_weight="1"
+                android:tag="com.maneater.dm.app.fragment.SortListFragment"
+                android:layout_height="wrap_content"/>
+
+        <RadioButton
+                android:id="@+id/rbFind"
+                android:layout_width="0dip"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:text="发现"
+                style="@style/HomeGroupButton"
+                android:layout_weight="1"
+                android:tag="com.maneater.dm.app.fragment.CategoryListFragment"
+                android:layout_height="wrap_content"/>
+
+        <RadioButton
+                android:id="@+id/tbMyHome"
+                android:layout_width="0dip"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:text="我"
+                style="@style/HomeGroupButton"
+                android:layout_weight="1"
+                android:tag="com.maneater.dm.app.fragment.MyHomeFragment"
+                android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+</LinearLayout>
