@@ -9,7 +9,7 @@ public class SortListFragment extends BaseFragment {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.fragment_suggestion_list;
+        return R.layout.fragment_category_list;
     }
 
     @Override

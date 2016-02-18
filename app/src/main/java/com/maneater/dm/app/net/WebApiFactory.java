@@ -32,6 +32,12 @@ public class WebApiFactory {
         @Override
         public Response intercept(Chain chain) throws IOException {
             okhttp3.Request request = chain.request();
+
+            if ("true".equals(request.header("needLogin"))) {
+                //额外统一添加header
+                request = request.newBuilder().addHeader("token", "asdfadfasdf").build();
+            }
+
             long t1 = System.nanoTime();
             Log.i("WebApi", String.format("Sending request %s on %s%n%s", request.url(), chain.connection(), request.headers()));
 

@@ -2,6 +2,7 @@ package com.maneater.dm.app.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,10 +19,13 @@ import rx.functions.Action1;
 
 import java.util.List;
 
-public class SuggestionListFragment extends BaseFragment {
 
+public class SuggestionListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+
+    private SwipeRefreshLayout lytSwipeRefresh = null;
     private RecyclerView recyclerView = null;
     private HospitalAdapter hospitalAdapter = null;
+    private int mPageSize = 0;
 
 
     @Override
@@ -47,14 +51,22 @@ public class SuggestionListFragment extends BaseFragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(hospitalAdapter);
+        lytSwipeRefresh.setOnRefreshListener(this);
     }
 
     @Override
     protected void initData() {
+        lytSwipeRefresh.setRefreshing(true);
+        loadPageData(0);
+    }
+
+
+    private void loadPageData(int targetPage) {
         WebApiFactory.createApi().listHospital("").subscribe(new Action1<Result<List<Hospital>>>() {
             @Override
             public void call(Result<List<Hospital>> listResult) {
                 hospitalAdapter.setDataList(listResult.getData());
+                lytSwipeRefresh.setRefreshing(false);
             }
         });
     }
@@ -65,4 +77,8 @@ public class SuggestionListFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onRefresh() {
+        initData();
+    }
 }

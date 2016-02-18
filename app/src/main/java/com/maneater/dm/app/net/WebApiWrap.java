@@ -2,6 +2,8 @@ package com.maneater.dm.app.net;
 
 import android.os.SystemClock;
 import com.maneater.dm.app.model.Hospital;
+import com.maneater.dm.app.model.Page;
+import retrofit2.http.Body;
 import retrofit2.http.Url;
 import rx.Observable;
 import rx.Subscriber;
@@ -48,8 +50,17 @@ public class WebApiWrap implements WebApi {
                         }
                     }
             );
-            return myObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+            return modify(myObservable);
         }
-        return webApi.listHospital(url).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return modify(webApi.listHospital(url).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()));
+    }
+
+    @Override
+    public List<Hospital> listHospital(@Body Page page) {
+        return null;
+    }
+
+    private static <T> Observable<T> modify(Observable<T> target) {
+        return target.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
     }
 }
