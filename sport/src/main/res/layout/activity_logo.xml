@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/main_color"
+                tools:context="com.maneater.app.sport.activity.LogoActivity">
+
+    <ImageView
+            android:id="@+id/vLogo"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/abc_action_bar_default_height_material"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+            android:id="@+id/vLytLogin"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/size_dp_16"
+            android:layout_marginRight="@dimen/size_dp_16"
+            android:layout_below="@id/vLogo"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.maneater.base.widget.ClearEditText
+                android:id="@+id/vEtxLogin"
+                android:hint="手机号码"
+                style="@style/EditTextInput"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <com.maneater.base.widget.ClearEditText
+                android:id="@+id/vEtxPassword"
+                android:hint="密码"
+                android:layout_marginTop="@dimen/size_dp_16"
+                style="@style/EditTextInput"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

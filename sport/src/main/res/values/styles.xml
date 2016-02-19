@@ -2,10 +2,10 @@
 
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light">
         <!-- customize the color palette -->
-        <item name="colorPrimary">@android:color/holo_red_light</item>
+        <item name="colorPrimary">@color/main_color</item>
         <!-- 状态栏 -->
-        <item name="colorPrimaryDark">@android:color/holo_red_light</item>
-        <item name="colorAccent">@android:color/holo_red_light</item>
+        <item name="colorPrimaryDark">@color/main_color</item>
+        <item name="colorAccent">@color/main_color</item>
     </style>
 
     <!-- Base application theme. -->
@@ -22,4 +22,17 @@
         <item name="android:padding">8dp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="EditTextInput">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:background">@drawable/edit_bg_shape</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:paddingTop">@dimen/size_dp_10</item>
+        <item name="android:paddingBottom">@dimen/size_dp_10</item>
+        <item name="android:paddingLeft">@dimen/size_dp_8</item>
+        <item name="android:paddingRight">@dimen/size_dp_8</item>
+        <item name="android:textSize">@dimen/size_sp_20</item>
+    </style>
+
+
 </resources>

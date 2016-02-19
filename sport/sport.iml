@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
-        <option name="GRADLE_PROJECT_PATH" value="sport" />
+        <option name="GRADLE_PROJECT_PATH" value=":sport" />
       </configuration>
     </facet>
     <facet type="android" name="Android">
@@ -94,10 +94,12 @@
     <orderEntry type="library" exported="" name="retrofit-2.0.0-beta3" level="project" />
     <orderEntry type="library" exported="" name="converter-scalars-2.0.0-beta3" level="project" />
     <orderEntry type="library" exported="" name="adapter-rxjava-2.0.0-beta3" level="project" />
+    <orderEntry type="library" exported="" name="AMap_3DMap_V3.2.0.1_20160122" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="rxandroid-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.5" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.1.0" level="project" />
+    <orderEntry type="library" exported="" name="AMap_Location_v2.3.0_20160112" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.1.1" level="project" />

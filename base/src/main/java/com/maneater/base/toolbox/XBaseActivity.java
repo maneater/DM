@@ -1,5 +1,6 @@
 package com.maneater.base.toolbox;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,8 +16,8 @@ public abstract class XBaseActivity extends AppCompatActivity implements InjectU
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView(savedInstanceState);
-        initData();
         initListener();
+        initData();
     }
 
     protected abstract int getContentViewId();
@@ -46,9 +47,9 @@ public abstract class XBaseActivity extends AppCompatActivity implements InjectU
         }
     }
 
-    protected abstract void initData();
-
     protected abstract void initListener();
+
+    protected abstract void initData();
 
     protected EventBus getEventBus() {
         return EventBus.getDefault();
@@ -60,6 +61,33 @@ public abstract class XBaseActivity extends AppCompatActivity implements InjectU
 
     protected void unRegisterEventBus() {
         getEventBus().unregister(this);
+    }
+
+    private ProgressDialog mProgressDialog = null;
+
+    protected ProgressDialog showProgress(String msg, boolean cancelAble, ProgressDialog.OnCancelListener onCancelListener) {
+        dismissProgress();
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setCancelable(cancelAble);
+            if (onCancelListener != null) {
+                mProgressDialog.setOnCancelListener(onCancelListener);
+            }
+        }
+        mProgressDialog.setMessage(msg);
+        mProgressDialog.show();
+        return mProgressDialog;
+    }
+
+
+    protected ProgressDialog showProgress(String msg) {
+        return showProgress(msg, false, null);
+    }
+
+    protected void dismissProgress() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
     }
 
 }

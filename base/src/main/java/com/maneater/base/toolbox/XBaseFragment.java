@@ -1,8 +1,10 @@
 package com.maneater.base.toolbox;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.os.CancellationSignal;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,9 +58,9 @@ public abstract class XBaseFragment extends Fragment implements InjectUtil.Injec
         }
     }
 
-    protected abstract void initData();
-
     protected abstract void initListener();
+
+    protected abstract void initData();
 
     protected EventBus getEventBus() {
         return EventBus.getDefault();
@@ -70,6 +72,33 @@ public abstract class XBaseFragment extends Fragment implements InjectUtil.Injec
 
     protected void unRegisterEventBus() {
         getEventBus().unregister(this);
+    }
+
+    private ProgressDialog mProgressDialog = null;
+
+    protected ProgressDialog showProgress(String msg, boolean cancelAble, ProgressDialog.OnCancelListener onCancelListener) {
+        dismissProgress();
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(getActivity());
+            mProgressDialog.setCancelable(cancelAble);
+            if (onCancelListener != null) {
+                mProgressDialog.setOnCancelListener(onCancelListener);
+            }
+        }
+        mProgressDialog.setMessage(msg);
+        mProgressDialog.show();
+        return mProgressDialog;
+    }
+
+
+    protected ProgressDialog showProgress(String msg) {
+        return showProgress(msg, false, null);
+    }
+
+    protected void dismissProgress() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
     }
 
 

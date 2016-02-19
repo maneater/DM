@@ -70,6 +70,10 @@ public class XActionBar extends FrameLayout implements View.OnClickListener {
         txActionName.setVisibility(visibility);
     }
 
+    public void setBackActionVisibility(int visibility) {
+        findViewById(R.id.backView).setVisibility(visibility);
+    }
+
     public void setTitleVisibility(int visibility) {
         txActionName.setVisibility(visibility);
     }
