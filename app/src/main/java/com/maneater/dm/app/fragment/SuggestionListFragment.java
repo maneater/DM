@@ -44,8 +44,7 @@ public class SuggestionListFragment extends BaseFragment implements SwipeRefresh
     }
 
     @Override
-    protected void initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.initView(inflater, container, savedInstanceState);
+    protected void initView(@Nullable Bundle savedInstanceState) {
         hospitalAdapter = new HospitalAdapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -53,6 +52,7 @@ public class SuggestionListFragment extends BaseFragment implements SwipeRefresh
         recyclerView.setAdapter(hospitalAdapter);
         lytSwipeRefresh.setOnRefreshListener(this);
     }
+
 
     @Override
     protected void initData() {

@@ -39,4 +39,5 @@ public class XImageLoader {
     public void displayImage(String url, ImageView imageView) {
         innerImageLoader.displayImage(url, imageView);
     }
+
 }

@@ -31,6 +31,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
     @Override
+    protected void initView(Bundle savedInstanceState) {
+
+    }
+
+    @Override
     protected void initData() {
         findViewById(R.id.rbCompetition).performClick();
     }

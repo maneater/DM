@@ -9,15 +9,14 @@ import de.greenrobot.event.EventBus;
 
 public abstract class XBaseActivity extends AppCompatActivity implements InjectUtil.InjectViewAble {
 
+    public final static String KEY_1 = "key_1";
 
     private View.OnClickListener onClickListener = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView(savedInstanceState);
-        initListener();
-        initData();
+        prepareOnCreate(savedInstanceState);
     }
 
     protected abstract int getContentViewId();
@@ -26,13 +25,12 @@ public abstract class XBaseActivity extends AppCompatActivity implements InjectU
 
     protected abstract void onViewClick(int viewId, View view);
 
-
     /**
      * 重写时，需要调用父类接口
      *
      * @param savedInstanceState
      */
-    protected void initView(Bundle savedInstanceState) {
+    protected void prepareOnCreate(Bundle savedInstanceState) {
         if (getContentViewId() > 0) {
             setContentView(getContentViewId());
         }
@@ -45,7 +43,13 @@ public abstract class XBaseActivity extends AppCompatActivity implements InjectU
             };
             InjectUtil.injectViews(getInjectViewTarget(), this, onClickListener);
         }
+        initView(savedInstanceState);
+        initListener();
+        initData();
     }
+
+
+    protected abstract void initView(Bundle savedInstanceState);
 
     protected abstract void initListener();
 

@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.os.CancellationSignal;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +25,7 @@ public abstract class XBaseFragment extends Fragment implements InjectUtil.Injec
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        initView(inflater, container, savedInstanceState);
-        initData();
-        initListener();
+        prepareOnCreateView(inflater, container, savedInstanceState);
         return rootView;
     }
 
@@ -43,7 +40,7 @@ public abstract class XBaseFragment extends Fragment implements InjectUtil.Injec
 
     protected abstract void onViewClick(int viewId, View view);
 
-    protected void initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void prepareOnCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (getContentViewId() > 0) {
             rootView = inflater.inflate(getContentViewId(), container, false);
         }
@@ -56,7 +53,13 @@ public abstract class XBaseFragment extends Fragment implements InjectUtil.Injec
             };
             InjectUtil.injectViews(getInjectViewTarget(), getActivity(), onClickListener);
         }
+
+        initView(savedInstanceState);
+        initData();
+        initListener();
     }
+
+    protected abstract void initView(@Nullable Bundle savedInstanceState);
 
     protected abstract void initListener();
 

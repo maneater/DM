@@ -20,7 +20,7 @@
                 android:id="@+id/rbCompetition"
                 android:layout_width="0dip"
                 android:text="比赛"
-                android:drawableTop="@mipmap/ic_launcher"
+                android:drawableTop="@drawable/icon_complation_selector"
                 style="@style/HomeGroupButton"
                 android:layout_weight="1"
                 android:tag="com.maneater.app.sport.fragment.CompetitionFragment"
@@ -28,7 +28,7 @@
 
         <RadioButton
                 android:id="@+id/rbRankingList"
-                android:drawableTop="@mipmap/ic_launcher"
+                android:drawableTop="@drawable/icon_ranking_selector"
                 android:layout_width="0dip"
                 android:text="排行榜"
                 style="@style/HomeGroupButton"
@@ -39,7 +39,7 @@
         <RadioButton
                 android:id="@+id/rbFind"
                 android:layout_width="0dip"
-                android:drawableTop="@mipmap/ic_launcher"
+                android:drawableTop="@drawable/icon_explorer_selector"
                 android:text="发现"
                 style="@style/HomeGroupButton"
                 android:layout_weight="1"
@@ -49,7 +49,7 @@
         <RadioButton
                 android:id="@+id/tbMyHome"
                 android:layout_width="0dip"
-                android:drawableTop="@mipmap/ic_launcher"
+                android:drawableTop="@drawable/icon_my_selector"
                 android:text="我"
                 style="@style/HomeGroupButton"
                 android:layout_weight="1"

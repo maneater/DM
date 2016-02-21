@@ -1,5 +1,7 @@
 package com.maneater.dm.app.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import com.maneater.base.util.InjectUtil;
 import com.maneater.dm.app.R;
@@ -19,6 +21,11 @@ public class CategoryListFragment extends BaseFragment {
 
     @Override
     protected void onViewClick(int viewId, View view) {
+
+    }
+
+    @Override
+    protected void initView(@Nullable Bundle savedInstanceState) {
 
     }
 

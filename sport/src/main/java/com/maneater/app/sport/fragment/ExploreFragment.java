@@ -1,19 +1,28 @@
 package com.maneater.app.sport.fragment;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
-import android.view.LayoutInflater;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-
 import com.maneater.app.sport.R;
+import com.maneater.app.sport.view.adapter.ActivitySportAdapter;
 import com.maneater.base.util.InjectUtil;
+import com.maneater.base.util.LogUtils;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ExploreFragment extends BaseFragment {
+public class ExploreFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+
+    private RecyclerView vActivityList = null;
+    private ActivitySportAdapter activitySportAdapter = null;
+    private SwipeRefreshLayout lytSwipeRefresh;
 
 
     public ExploreFragment() {
@@ -36,12 +45,28 @@ public class ExploreFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void initView(@Nullable Bundle savedInstanceState) {
 
     }
 
     @Override
+    protected void initData() {
+        activitySportAdapter = new ActivitySportAdapter();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        vActivityList.setItemAnimator(new DefaultItemAnimator());
+        vActivityList.setLayoutManager(linearLayoutManager);
+        vActivityList.setAdapter(activitySportAdapter);
+        lytSwipeRefresh.setOnRefreshListener(this);
+    }
+
+    @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    public void onRefresh() {
+        LogUtils.logMethod("onRefresh");
 
     }
 }

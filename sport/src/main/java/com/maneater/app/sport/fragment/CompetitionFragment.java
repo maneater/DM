@@ -2,9 +2,7 @@ package com.maneater.app.sport.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationListener;
@@ -41,8 +39,7 @@ public class CompetitionFragment extends BaseFragment implements AMapLocationLis
 
 
     @Override
-    protected void initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.initView(inflater, container, savedInstanceState);
+    protected void initView(@Nullable Bundle savedInstanceState) {
         mapView.onCreate(savedInstanceState);
         mAMap = mapView.getMap();
         vActionBar.setBackActionVisibility(View.INVISIBLE);
@@ -55,7 +52,7 @@ public class CompetitionFragment extends BaseFragment implements AMapLocationLis
 
     @Override
     protected void initData() {
-        showProgress("loading");
+
     }
 
     @Override

@@ -42,7 +42,6 @@ public class MainActivity extends XBaseActivity implements ViewPager.OnPageChang
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        super.initView(savedInstanceState);
         int count = topBar.getChildCount();
         for (int i = 0; i < count; i++) {
             View childView = topBar.getChildAt(i);

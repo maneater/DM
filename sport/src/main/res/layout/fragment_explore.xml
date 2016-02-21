@@ -1,13 +1,35 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.maneater.app.sport.fragment.ExploreFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="match_parent"
+              xmlns:base="http://schemas.android.com/apk/res-auto"
+              tools:context="com.maneater.app.sport.fragment.ExploreFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.maneater.base.widget.XActionBar
+            android:id="@id/vActionBar"
+            base:titleText="发现"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            android:background="@color/main_color"
+            android:layout_height="wrap_content">
+    </com.maneater.base.widget.XActionBar>
 
-</FrameLayout>
+    <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    </RadioGroup>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:id="@+id/lytSwipeRefresh"
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/vActivityList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

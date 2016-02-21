@@ -1,0 +1,129 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="match_parent"
+              xmlns:base="http://schemas.android.com/apk/res-auto">
+
+    <com.maneater.base.widget.XActionBar
+            android:id="@+id/vActionBar"
+            android:layout_width="match_parent"
+            android:background="@color/main_color"
+            base:titleText="注册"
+            android:layout_height="wrap_content">
+    </com.maneater.base.widget.XActionBar>
+
+    <TextView
+            android:id="@+id/vTxTip"
+            android:layout_width="match_parent"
+            android:gravity="left"
+            android:layout_marginLeft="@dimen/size_dp_16"
+            android:layout_marginRight="@dimen/size_dp_16"
+            android:text="@string/phone_send_tip"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/size_sp_16"
+            android:paddingTop="@dimen/size_dp_8"
+            android:paddingBottom="@dimen/size_dp_8"
+            android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:padding="@dimen/size_dp_16"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="验证码    "
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/size_sp_18"
+                android:layout_height="wrap_content"
+                />
+
+        <com.maneater.base.widget.ClearEditText
+                android:id="@+id/vEtxPhoneVerCode"
+                android:padding="0dp"
+                android:background="@null"
+                android:textSize="@dimen/size_sp_18"
+                android:gravity="left"
+                android:layout_below="@id/vActionBar"
+                android:textColorHint="#FFACACAC"
+                android:paddingLeft="@dimen/size_dp_16"
+                android:paddingRight="@dimen/size_dp_16"
+                android:textColor="@color/main_color"
+                android:hint="请输入短信验证码"
+                android:drawablePadding="@dimen/size_dp_8"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:layout_width="@dimen/size_dp_2"
+                android:background="@color/background"
+                android:layout_height="match_parent"></View>
+
+        <TextView
+                android:layout_width="120dp"
+                android:text="@string/phone_code_resend_tip"
+                android:paddingLeft="@dimen/size_dp_8"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/size_sp_18"
+                android:layout_height="wrap_content"
+                android:id="@+id/vEtxResendTip"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:padding="@dimen/size_dp_16"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="登陆密码"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/size_sp_18"
+                android:layout_height="wrap_content"/>
+
+        <com.maneater.base.widget.ClearEditText
+                android:background="@null"
+                android:textSize="@dimen/size_sp_18"
+                android:gravity="left"
+                android:layout_below="@id/vActionBar"
+                android:textColorHint="#FFACACAC"
+                android:paddingLeft="@dimen/size_dp_16"
+                android:paddingRight="@dimen/size_dp_16"
+                android:textColor="@color/main_color"
+                android:hint="设置登陆密码"
+                android:drawablePadding="@dimen/size_dp_8"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/vEtxPassword"/>
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:gravity="left"
+            android:layout_marginLeft="@dimen/size_dp_16"
+            android:layout_marginRight="@dimen/size_dp_16"
+            android:text="6-20位数字/字母/符合组成,不含空格"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/size_sp_16"
+            android:paddingTop="@dimen/size_dp_8"
+            android:paddingBottom="@dimen/size_dp_8"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/vBtnConfirmRegisterACK"
+            style="@style/BtnCommonOrange"
+            android:layout_marginLeft="@dimen/size_dp_16"
+            android:layout_marginRight="@dimen/size_dp_16"
+            android:layout_below="@id/vTxTip"
+            android:layout_marginTop="@dimen/size_dp_8"
+            android:text="确定"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+</LinearLayout>
