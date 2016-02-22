@@ -1,19 +1,14 @@
 package com.maneater.app.sport.net;
 
 import android.util.Log;
-import com.maneater.app.sport.account.XAccount;
 import com.maneater.app.sport.account.XAccountManager;
 import com.maneater.app.sport.net.core.GsonConverterFactory;
-import com.maneater.app.sport.net.vo.LoginVo;
-import com.maneater.app.sport.net.vo.PhoneVerCodeVo;
-import com.maneater.app.sport.net.vo.RegisterVo;
 import com.maneater.base.util.StringUtils;
 import okhttp3.*;
 import retrofit2.Call;
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
 import retrofit2.RxJavaCallAdapterFactory;
-import retrofit2.http.Body;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -34,7 +29,7 @@ public class WebApiFactory {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addCallAdapterFactory(SimpleCallAdapterFactory.create())
                 .build();
-        return new WebApiWrap(retrofit.create(WebApi.class));
+        return retrofit.create(WebApi.class);
     }
 
     private static class SimpleCallAdapterFactory implements CallAdapter.Factory {
@@ -76,30 +71,30 @@ public class WebApiFactory {
     }
 
 
-    private static class WebApiWrap implements WebApi {
-
-        private WebApi webApi = null;
-
-        public WebApiWrap(WebApi webApi) {
-            this.webApi = webApi;
-        }
-
-
-        @Override
-        public Result<Void> phoneVerCode(@Body PhoneVerCodeVo phoneVerCodeVo) {
-            return webApi.phoneVerCode(phoneVerCodeVo);
-        }
-
-        @Override
-        public Result<XAccount> register(@Body RegisterVo registerVo) {
-            return webApi.register(registerVo);
-        }
-
-        @Override
-        public Result<XAccount> login(@Body LoginVo registerVo) {
-            return webApi.login(registerVo);
-        }
-    }
+//    private static class WebApiWrap implements WebApi {
+//
+//        private WebApi webApi = null;
+//
+//        public WebApiWrap(WebApi webApi) {
+//            this.webApi = webApi;
+//        }
+//
+//
+//        @Override
+//        public Result<Void> phoneVerCode(@Body PhoneVerCodeVo phoneVerCodeVo) {
+//            return webApi.phoneVerCode(phoneVerCodeVo);
+//        }
+//
+//        @Override
+//        public Result<XAccount> register(@Body RegisterVo registerVo) {
+//            return webApi.register(registerVo);
+//        }
+//
+//        @Override
+//        public Result<XAccount> login(@Body LoginVo registerVo) {
+//            return webApi.login(registerVo);
+//        }
+//    }
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=UTF-8");
     private static Result<Void> Error_Result_Net = new Result<Void>("网络请求出错,请稍后再试验", -1);
