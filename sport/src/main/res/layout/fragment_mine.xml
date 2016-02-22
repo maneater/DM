@@ -1,23 +1,202 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        tools:context="com.maneater.app.sport.fragment.MineFragment"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/lytSwipeRefresh"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#191919">
+
+        <LinearLayout
+                android:id="@+id/vLytInfo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/black"
-                tools:context="com.maneater.app.sport.fragment.MineFragment">
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_dp_16"
+                android:paddingBottom="@dimen/size_dp_16"
+                android:background="#1F1F1F"
+                android:gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content">
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:src="@drawable/icon_setting"
-            android:layout_alignParentRight="true"
-            android:layout_height="wrap_content"/>
+            <com.meg7.widget.CircleImageView
+                    android:id="@+id/vImgHeaderViewACK"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icon_default_head"
+                    android:scaleType="fitXY"/>
+
+            <TextView
+                    android:id="@+id/vTxUserName"
+                    android:layout_below="@id/vImgHeaderViewACK"
+                    android:layout_marginTop="@dimen/size_dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Kingdorm"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_sp_32"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/icon_setting"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:id="@+id/vLytCountInfo"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_below="@id/vLytInfo"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/vTxTotalSortNum"
+                        android:layout_width="wrap_content"
+                        android:text="12"
+                        android:textSize="40sp"
+                        android:textColor="#00ffb7"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:text="排名"
+                        android:textSize="@dimen/size_sp_16"
+                        android:textColor="#00ffb7"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/vTxTotalTime"
+                        android:layout_width="wrap_content"
+                        android:text="12"
+                        android:textSize="40sp"
+                        android:textColor="#00ffb7"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:text="时间"
+                        android:textSize="@dimen/size_sp_16"
+                        android:textColor="#00ffb7"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/vTxTotalDistance"
+                        android:layout_width="wrap_content"
+                        android:text="12"
+                        android:textSize="40sp"
+                        android:textColor="#00ffb7"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:text="里程"
+                        android:textSize="@dimen/size_sp_16"
+                        android:textColor="#00ffb7"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/vLytShowMyHistory"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@id/vLytCountInfo"
+                android:background="#1F1F1F"
+                android:paddingLeft="@dimen/size_dp_28"
+                android:paddingRight="@dimen/size_dp_28"
+                android:layout_marginTop="@dimen/size_dp_16"
+                android:paddingTop="@dimen/size_dp_16"
+                android:paddingBottom="@dimen/size_dp_16"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:textColor="@color/white"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_sp_24"
+                    android:text="历史记录"
+                    android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/icon_sport_location"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/vLytShowMyScore"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:background="#383838"
+                android:layout_below="@id/vLytShowMyHistory"
+                android:paddingLeft="@dimen/size_dp_28"
+                android:paddingRight="@dimen/size_dp_28"
+                android:paddingTop="@dimen/size_dp_16"
+                android:paddingBottom="@dimen/size_dp_16"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:textColor="@color/white"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_sp_24"
+                    android:text="我的成绩"
+                    android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/icon_sport_location"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
 
 
-    <com.meg7.widget.CircleImageView
-            android:id="@+id/vImgHeaderView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/icon_default_head"
-            android:scaleType="fitXY"/>
+        <HorizontalScrollView
+                android:id="@+id/vLytHorizontal"
+                android:layout_width="match_parent"
+                android:fillViewport="true"
+                android:layout_below="@id/vLytShowMyScore"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content">
 
-</RelativeLayout>
+            <com.maneater.app.sport.view.CurveView
+                    android:id="@+id/vCurveView"
+                    android:background="#1F1F1F"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+        </HorizontalScrollView>
+
+
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
+
