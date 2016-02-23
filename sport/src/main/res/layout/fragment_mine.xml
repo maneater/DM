@@ -46,6 +46,7 @@
         <ImageButton
                 android:id="@+id/vIvSettingACK"
                 android:layout_width="50dp"
+                android:clickable="true"
                 android:src="@drawable/icon_setting"
                 android:background="?android:attr/selectableItemBackground"
                 android:layout_alignParentRight="true"
