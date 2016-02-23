@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.maneater.app.sport.activity.PersonalAchievementActivity">
+
+    <com.maneater.base.widget.XActionBar
+            app:titleText="我的成绩"
+            android:background="@color/main_color"
+            android:layout_width="match_parent"
+            android:id="@+id/vActionBar"
+            android:layout_height="wrap_content">
+    </com.maneater.base.widget.XActionBar>
+
+</LinearLayout>

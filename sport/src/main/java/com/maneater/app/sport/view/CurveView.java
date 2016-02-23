@@ -9,9 +9,8 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
+import com.maneater.base.util.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,26 +22,25 @@ public class CurveView extends View {
     private Path mPath = new Path();
     private float mAnimateRadio = 0.0f;
 
-    private int mLabelTextSize = 50;
+    private int mLabelTextSize;
     // x最小间隔
-    private int minXInterval = 300;
+    private int minXInterval;
 
-    private float mPaddingLeft = 100;
-    private float mPaddingRight = 100;
-    private float mPaddingTop = 50;
-    private float mPaddingBottom = 50;
+    private float mPaddingLeft;
+    private float mPaddingRight;
+    private float mPaddingTop;
+    private float mPaddingBottom;
 
     private int mDividerSize = 8;
-    private float mDividerLineWidth = 2;
+    private float mDividerLineWidth;
     private int mDividerColor = Color.WHITE;
 
-    private float mLineWidth = 8;
+    private float mLineWidth;
     private int mLineColor = 0xFF00FFB5;
 
-    private int mCicleRadius = 18;
-    private int mCicleRadius2 = 12;
+    private int mCicleRadius;
+    private int mCicleRadius2;
 
-    private GestureDetector mGestureDetector = null;
 
     public CurveView(Context context) {
         super(context);
@@ -60,27 +58,25 @@ public class CurveView extends View {
     }
 
     private void init() {
-        mPaint.setTextSize(mLabelTextSize);
-        mGestureDetector = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                int mRight = getRight();
-                int targetScrollX = (int) (getScrollX() + distanceX);
-                if (targetScrollX <= 0) {
-                    scrollTo(0, 0);
-                } else if (targetScrollX + mWindowWidth >= getWidth()) {
-                    scrollTo(getWidth() - mWindowWidth, 0);
-                } else {
-                    scrollBy((int) distanceX, 0);
-                }
-                return true;
-            }
 
-            @Override
-            public boolean onDown(MotionEvent e) {
-                return true;
-            }
-        });
+        setDrawingCacheEnabled(false);
+
+        mLabelTextSize = ViewUtils.sp2px(getContext(), 12);
+        mPaddingLeft = ViewUtils.dp2px(getContext(), 28);
+        mPaddingRight = ViewUtils.dp2px(getContext(), 28);
+        mPaddingTop = ViewUtils.dp2px(getContext(), 30);
+        mPaddingBottom = ViewUtils.dp2px(getContext(), 20);
+
+        minXInterval = ViewUtils.dp2px(getContext(), 100);
+
+        mDividerLineWidth = ViewUtils.dp2px(getContext(), 1);
+
+        mLineWidth = ViewUtils.dp2px(getContext(), 2);
+
+        mCicleRadius = ViewUtils.dp2px(getContext(), 6);
+        mCicleRadius2 = ViewUtils.dp2px(getContext(), 3);
+
+        mPaint.setTextSize(mLabelTextSize);
     }
 //
 //    @Override
@@ -105,7 +101,7 @@ public class CurveView extends View {
         mPaint.setStrokeWidth(mDividerLineWidth);
         mPaint.setColor(mDividerColor);
         float height = getMaxDrawHeight() / mDividerSize;
-        for (int i = 0; i <= mDividerSize + 1; i++) {
+        for (int i = 0; i <= mDividerSize; i++) {
             canvas.drawLine(mPaddingLeft, height * i + mPaddingTop, getWidth() - mPaddingRight, height * i + mPaddingTop, mPaint);
         }
     }
@@ -128,14 +124,14 @@ public class CurveView extends View {
             int pointSize = dataItem.size();
 
             float radioY = (float) (maxHeight / mMaxItem.value);
-            float xStep = (getMaxDrawWidth() / pointSize);
+            float xStep = (getMaxDrawWidth() / Math.max(pointSize - 1, 1));
 
 
             float[] drawPoints = new float[pointSize * 2];
             mPath.reset();
             float mXPoint = mPaddingLeft;
 
-            if (xStep > minXInterval) {
+            if (pointSize == 1) {
                 mXPoint += (xStep / 2);
             }
 
@@ -182,7 +178,7 @@ public class CurveView extends View {
                 float yOffset = (mPaint.ascent() - mPaint.descent()) / 2;
                 canvas.drawText(String.valueOf(curveItem.value), x + xOffset, y + yOffset, mPaint);
                 xOffset = -mPaint.measureText(String.valueOf(curveItem.label)) / 2;
-                canvas.drawText(String.valueOf(curveItem.label), x + xOffset, getHeight(), mPaint);
+                canvas.drawText(String.valueOf(curveItem.label), x + xOffset, getHeight() - mPaddingBottom / 2 - yOffset / 2, mPaint);
             }
         }
     }
@@ -223,17 +219,14 @@ public class CurveView extends View {
         }
     }
 
-    private int mWindowWidth = 0;
-
-
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int mWidth = getMeasuredWidth();
-        if (this.dataItem != null) {
+        if (this.dataItem != null && this.dataItem.size() > 0) {
             //最小宽度
-            int needWidth = minXInterval * this.dataItem.size();
+            int size = this.dataItem.size();
+            int needWidth = minXInterval * (Math.max(size - 1, 1));
             if (mWidth < needWidth) {
                 setMeasuredDimension(needWidth, getMeasuredHeight());
             }

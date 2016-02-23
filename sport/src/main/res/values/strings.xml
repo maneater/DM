@@ -12,4 +12,5 @@
     <string name="phone_send_tip">已发送验证码短信(免费)到%1$s</string>
     <string name="phone_code_resend_tip">%1$s秒后重发</string>
     <string name="title_activity_user_statistics">UserStatisticsActivity</string>
+    <string name="title_activity_personal_history">PersonalHistoryActivity</string>
 </resources>

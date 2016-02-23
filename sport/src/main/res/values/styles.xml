@@ -42,7 +42,7 @@
 
     <style name="BtnCommon" parent="EditTextInput">
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/edit_bg_shape</item>
+        <item name="android:background">@drawable/btn_white_bg_selector</item>
         <item name="android:textSize">@dimen/size_sp_20</item>
     </style>
 

@@ -8,6 +8,7 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
+            android:clickable="true"
             android:layout_height="match_parent"
             android:background="#191919">
 
@@ -24,8 +25,8 @@
 
             <com.meg7.widget.CircleImageView
                     android:id="@+id/vImgHeaderViewACK"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="83dp"
+                    android:layout_height="83dp"
                     android:src="@drawable/icon_default_head"
                     android:scaleType="fitXY"/>
 
@@ -37,16 +38,18 @@
                     android:layout_centerHorizontal="true"
                     android:text="Kingdorm"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/size_sp_32"
+                    android:textSize="@dimen/size_sp_18"
                     android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
-        <ImageView
-                android:layout_width="wrap_content"
+        <ImageButton
+                android:id="@+id/vIvSettingACK"
+                android:layout_width="50dp"
                 android:src="@drawable/icon_setting"
+                android:background="?android:attr/selectableItemBackground"
                 android:layout_alignParentRight="true"
-                android:layout_height="wrap_content"/>
+                android:layout_height="50dp"/>
 
         <LinearLayout
                 android:id="@+id/vLytCountInfo"
@@ -126,7 +129,7 @@
         </LinearLayout>
 
         <LinearLayout
-                android:id="@+id/vLytShowMyHistory"
+                android:id="@+id/vLytShowMyHistoryACK"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_below="@id/vLytCountInfo"
@@ -154,11 +157,11 @@
         </LinearLayout>
 
         <LinearLayout
-                android:id="@+id/vLytShowMyScore"
+                android:id="@+id/vLytShowMyScoreACK"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:background="#383838"
-                android:layout_below="@id/vLytShowMyHistory"
+                android:layout_below="@id/vLytShowMyHistoryACK"
                 android:paddingLeft="@dimen/size_dp_28"
                 android:paddingRight="@dimen/size_dp_28"
                 android:paddingTop="@dimen/size_dp_16"
@@ -182,15 +185,17 @@
 
 
         <HorizontalScrollView
+                android:layerType="software"
                 android:id="@+id/vLytHorizontal"
                 android:layout_width="match_parent"
                 android:fillViewport="true"
-                android:layout_below="@id/vLytShowMyScore"
+                android:layout_below="@id/vLytShowMyScoreACK"
                 android:layout_alignParentBottom="true"
                 android:layout_height="wrap_content">
 
             <com.maneater.app.sport.view.CurveView
                     android:id="@+id/vCurveView"
+                    android:layerType="software"
                     android:background="#1F1F1F"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>

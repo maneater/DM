@@ -9,7 +9,7 @@
     <com.maneater.base.widget.XActionBar
             android:id="@+id/vActionBar"
             android:layout_width="match_parent"
-            android:background="@android:color/holo_red_light"
+            android:background="@color/main_color"
             base:titleText="比赛"
             android:layout_height="wrap_content">
     </com.maneater.base.widget.XActionBar>
